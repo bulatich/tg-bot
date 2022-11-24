@@ -30,7 +30,7 @@ bot.on('message', async  (msg) => {
 
   switch (text) {
       case '/start': {
-          await bot.sendMessage(chatId, 'Choose type of interview', gameOptionns)
+          await bot.sendMessage(chatId, 'Choose type of interview')
           break;
       }
       default: {
