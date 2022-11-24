@@ -1,10 +1,10 @@
 export default  class MessageService {
     static convert(message) {
         switch (message) {
-            case 'JS': {
+            case 'js': {
                 return 'ДжаваСкрипт'
             }
-        case 'JAVA': {
+        case 'java': {
             return 'ДЖава'
         }
         }
