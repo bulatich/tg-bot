@@ -9,13 +9,18 @@ const bot = new TelegramBot(token, {polling: true});
 
 bot.setMyCommands([
     {command: '/start', description: 'Пройти собеседование'},
-    {command: '/info', description: 'Бот поможет подготовиться к собеседованию или пройти скринниг по актуальным вопросам из собеседований!'}
+    {command: '/info', description: 'Информация'}
 ])
 
 // Matches "/start [whatever]"
-bot.onText(/\/echo (.+)/, (msg, match) => {
+bot.onText(/\/start (.+)/, (msg, match) => {
   const chatId = msg.chat.id;
   bot.sendMessage(chatId, 'Выберите направление');
+});
+
+bot.onText(/\/info (.+)/, (msg, match) => {
+    const chatId = msg.chat.id;
+    bot.sendMessage(chatId, 'Бот поможет подготовиться к собеседованию или пройти скринниг по актуальным вопросам из собеседований!');
 });
 
 // Listen for any kind of message. There are different kinds of
