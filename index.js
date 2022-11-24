@@ -6,11 +6,20 @@ const token = process.env.TELEGRAM_API_TOKEN;
 const bot = new TelegramBot(token, {polling: true});
 
 // Set initial commands
+//
+//bot.setMyCommands([
+//    {command: '/start', description: 'Пройти собеседование'},
+//    {command: '/info', description: 'Информация'}
+//])
 
-bot.setMyCommands([
-    {command: '/start', description: 'Пройти собеседование'},
-    {command: '/info', description: 'Информация'}
-])
+const gameOptionns = {
+    reply_markup: JSON.stringify({
+        inline_keyboard: [
+            {text: 'Frontend', callback_data: ''},
+            {text: 'Backend', callback_data: ''}
+        ]
+    })
+}
 
 // Listen for any kind of message. There are different kinds of
 // messages.
@@ -20,19 +29,11 @@ bot.on('message', async  (msg) => {
 
   switch (text) {
       case '/start': {
-        await bot.sendMessage(chatId, 'Received your message');
-          await bot.setMyCommands([
-              {command: '/frontend', description: 'Пройти собеседование по frontend'},
-              {command: '/backend', description: 'Пройти собеседование по backend'}
-          ])
-          break;
-      }
-      case '/info': {
-          bot.sendMessage(chatId, 'Received your message');
+          await bot.sendMessage(chatId, 'Choose type of interview', gameOptionns)
           break;
       }
       default: {
-          bot.sendMessage(chatId, 'Некорректная команда');
+          bot.sendMessage(chatId, 'Invalid command');
       }
   }
 });
