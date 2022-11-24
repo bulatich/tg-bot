@@ -33,7 +33,7 @@ bot.on('message', async  (msg) => {
           break;
       }
       default: {
-          bot.sendMessage(chatId, 'Invalid command');
+         await bot.sendMessage(chatId, 'Invalid command');
       }
   }
 });
