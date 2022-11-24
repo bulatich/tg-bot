@@ -1,12 +1,15 @@
 export default  class MessageService {
     static convert(message) {
         switch (message) {
-            case 'js': {
+            case '/start': {
+                return 'Добро пожаловать! Выберите тип сообеседования, которое вы хотели бы пройти'
+            }
+            case '/frontend': {
                 return 'ДжаваСкрипт'
             }
-        case 'java': {
-            return 'ДЖава'
-        }
+            case '/backend': {
+                return 'ДЖава'
+            }
         }
     }
 }
