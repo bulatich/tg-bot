@@ -13,13 +13,13 @@ const bot = new TelegramBot(token, {polling: true});
 //])
 
 const gameOptionns = {
-    reply_markup: JSON.stringify({
+    reply_markup: {
         inline_keyboard: [
             [ {text: 'Frontend', callback_data: ''},
               {text: 'Backend', callback_data: ''}
             ]
         ]
-    })
+    }
 }
 
 // Listen for any kind of message. There are different kinds of
@@ -30,7 +30,7 @@ bot.on('message', async  (msg) => {
 
   switch (text) {
       case '/start': {
-          await bot.sendMessage(chatId, 'Choose type of interview')
+          await bot.sendMessage(chatId, 'Choose type of interview', gameOptionns)
           break;
       }
       default: {
