@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { config } from 'dotenv'
 import express from 'express'
-import MessageController from './controllers/message-controller';
 
 config()
 const app = express()
