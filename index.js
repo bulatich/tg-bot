@@ -29,11 +29,11 @@ bot.on('message', async  (msg) => {
 
   switch (text) {
       case '/start': {
-          await bot.sendMessage(chatId, 'Choose type of interview', gameOptionns)
+           bot.sendMessage(chatId, 'Choose type of interview', gameOptionns)
           break;
       }
       default: {
-         await bot.sendMessage(chatId, 'Invalid command');
+          bot.sendMessage(chatId, 'Invalid command');
       }
   }
 });
