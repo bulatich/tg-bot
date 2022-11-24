@@ -1,40 +1,29 @@
-import axios from 'axios'
-import { config } from 'dotenv'
-import express from 'express'
-import MessageController from './controllers/message-controller.js';
+const TelegramBot = require('node-telegram-bot-api');
 
-config()
-const app = express()
+// replace the value below with the Telegram token you receive from @BotFather
+const token = 'YOUR_TELEGRAM_BOT_TOKEN';
 
-const TELEGRAM_URI = `https://api.telegram.org/bot${process.env.TELEGRAM_API_TOKEN}/sendMessage`
+// Create a bot that uses 'polling' to fetch new updates
+const bot = new TelegramBot(token, {polling: true});
 
-app.use(express.json())
-app.use(express.urlencoded({extended: true}))
+// Matches "/echo [whatever]"
+bot.onText(/\/echo (.+)/, (msg, match) => {
+  // 'msg' is the received Message from Telegram
+  // 'match' is the result of executing the regexp above on the text content
+  // of the message
 
+  const chatId = msg.chat.id;
+  const resp = match[1]; // the captured "whatever"
 
-app.post('/new-message', async (req, res) => {
-    const { message } = req.body
+  // send back the matched "whatever" to the chat
+  bot.sendMessage(chatId, resp);
+});
 
-    const messageText = message?.text?.toLowerCase()?.trim()
+// Listen for any kind of message. There are different kinds of
+// messages.
+bot.on('message', (msg) => {
+  const chatId = msg.chat.id;
 
-    const chatId = message?.chat?.id
-    if (!messageText || !chatId) {
-        return res.sendStatus(400)
-    }
-    const text = MessageController.convert(messageText);
-    try {
-  await axios.post(TELEGRAM_URI, {
-    chat_id: chatId,
-    text
-  })
-  res.send('Done')
-} catch (e) {
-  console.log(e)
-  res.send(e)
-    }
-})
-
-const PORT = process.env.PORT || 3000
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`)
-})
+  // send a message to the chat acknowledging receipt of their message
+  bot.sendMessage(chatId, 'Received your message');
+});
