@@ -15,8 +15,8 @@ const bot = new TelegramBot(token, {polling: true});
 const gameOptionns = {
     reply_markup: JSON.stringify({
         inline_keyboard: [
-            [ {text: 'Frontend', callback_data: 'dsf'},
-              {text: 'Backend', callback_data: 'qqe'}
+            [ {text: 'Frontend', callback_data: 'frontend'},
+              {text: 'Backend', callback_data: 'backend'}
             ]
         ]
     })
@@ -38,3 +38,9 @@ bot.on('message', async  (msg) => {
       }
   }
 });
+
+bot.on('callback_query', async msg => {
+    const data = msg.data;
+    const chatId= msg.message.chat.id
+    await bot.sendMessage(chatId, data)
+})
