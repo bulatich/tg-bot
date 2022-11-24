@@ -12,22 +12,27 @@ bot.setMyCommands([
     {command: '/info', description: 'Информация'}
 ])
 
-// Matches "/start [whatever]"
-bot.onText(/\/start (.+)/, (msg, match) => {
-  const chatId = msg.chat.id;
-  bot.sendMessage(chatId, 'Выберите направление');
-});
-
-bot.onText(/\/info (.+)/, (msg, match) => {
-    const chatId = msg.chat.id;
-    bot.sendMessage(chatId, 'Бот поможет подготовиться к собеседованию или пройти скринниг по актуальным вопросам из собеседований!');
-});
-
 // Listen for any kind of message. There are different kinds of
 // messages.
-bot.on('message', (msg) => {
+bot.on('message', async  (msg) => {
   const chatId = msg.chat.id;
+  const text = msg.text;
 
-  // send a message to the chat acknowledging receipt of their message
-  bot.sendMessage(chatId, 'Received your message');
+  switch (text) {
+      case '/start': {
+        await bot.sendMessage(chatId, 'Received your message');
+          await bot.setMyCommands([
+              {command: '/frontend', description: 'Пройти собеседование по frontend'},
+              {command: '/backend', description: 'Пройти собеседование по backend'}
+          ])
+          break;
+      }
+      case '/info': {
+          bot.sendMessage(chatId, 'Received your message');
+          break;
+      }
+      default: {
+          bot.sendMessage(chatId, 'Некорректная команда');
+      }
+  }
 });
