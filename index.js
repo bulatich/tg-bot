@@ -13,13 +13,13 @@ const bot = new TelegramBot(token, {polling: true});
 //])
 
 const gameOptionns = {
-    reply_markup: {
+    reply_markup: JSON.stringify({
         inline_keyboard: [
-            [ {text: 'Frontend', callback_data: ''},
-              {text: 'Backend', callback_data: ''}
+            [ {text: 'Frontend', callback_data: 'dsf'},
+              {text: 'Backend', callback_data: 'qqe'}
             ]
         ]
-    }
+    })
 }
 
 // Listen for any kind of message. There are different kinds of
