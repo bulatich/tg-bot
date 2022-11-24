@@ -2,11 +2,14 @@
   "name": "tgbot",
   "version": "1.0.0",
   "main": "index.js",
+  "author": "bulat <bulatich1@gmail.com>",
   "license": "MIT",
   "private": true,
-  "devDependencies": {
-    "nodemon": "^2.0.20"
-  },
+    "type": "module",
+    "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+},
   "dependencies": {
     "axios": "^1.2.0",
     "dotenv": "^16.0.3",
