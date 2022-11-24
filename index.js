@@ -15,8 +15,9 @@ const bot = new TelegramBot(token, {polling: true});
 const gameOptionns = {
     reply_markup: JSON.stringify({
         inline_keyboard: [
-            {text: 'Frontend', callback_data: ''},
-            {text: 'Backend', callback_data: ''}
+            [ {text: 'Frontend', callback_data: ''},
+              {text: 'Backend', callback_data: ''}
+            ]
         ]
     })
 }
@@ -29,11 +30,11 @@ bot.on('message', async  (msg) => {
 
   switch (text) {
       case '/start': {
-           bot.sendMessage(chatId, 'Choose type of interview', gameOptionns)
+          await bot.sendMessage(chatId, 'Choose type of interview', gameOptionns)
           break;
       }
       default: {
-          bot.sendMessage(chatId, 'Invalid command');
+         await bot.sendMessage(chatId, 'Invalid command');
       }
   }
 });
