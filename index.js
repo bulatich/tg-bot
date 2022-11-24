@@ -8,16 +8,13 @@ const app = express()
 const TELEGRAM_URI = `https://api.telegram.org/bot${process.env.TELEGRAM_API_TOKEN}/sendMessage`
 
 app.use(express.json())
-app.use(
-        express.urlencoded({
-            extended: true
-        })
-        )
+app.use(express.urlencoded({extended: true}))
 
 app.post('/new-message', async (req, res) => {
     const { message } = req.body
 
     const messageText = message?.text?.toLowerCase()?.trim()
+    console.log(JSON.stringify(message))
     const chatId = message?.chat?.id
     if (!messageText || !chatId) {
         return res.sendStatus(400)
