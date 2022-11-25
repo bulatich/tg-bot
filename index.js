@@ -1,16 +1,11 @@
 const TelegramBot = require('node-telegram-bot-api');
+const Frontend = require('./src/frontendPath');
 
 const token = process.env.TELEGRAM_API_TOKEN;
 
 // Create a bot that uses 'polling' to fetch new updates
-const bot = new TelegramBot(token, {polling: true});
+export const bot = new TelegramBot(token, {polling: true});
 
-// Set initial commands
-//
-//bot.setMyCommands([
-//    {command: '/start', description: 'Пройти собеседование'},
-//    {command: '/info', description: 'Информация'}
-//])
 
 const gameOptionns = {
     reply_markup: JSON.stringify({
@@ -42,5 +37,8 @@ bot.on('message', async  (msg) => {
 bot.on('callback_query', async msg => {
     const data = msg.data;
     const chatId= msg.message.chat.id
+    if (data === 'frontend') {
+        Frontend.sendQuestion(chatId)
+    }
     await bot.sendMessage(chatId, data)
 })
