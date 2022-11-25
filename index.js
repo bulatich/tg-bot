@@ -1,10 +1,10 @@
-const TelegramBot = require('node-telegram-bot-api');
-const Frontend = require('./src/frontendPath');
+import TelegramBot from 'node-telegram-bot-api';
+import Frontend from './src/frontendPath';
 
 const token = process.env.TELEGRAM_API_TOKEN;
 
 // Create a bot that uses 'polling' to fetch new updates
-module.exports.bot = bot = new TelegramBot(token, {polling: true});
+export const bot = new TelegramBot(token, {polling: true});
 
 
 const gameOptionns = {

@@ -1,4 +1,4 @@
-const BotModule = require('../../index')
+import {bot} from '../../index.js';
 
 const questions = [
     {text: 'Что такое замыкание?', callback_data: '1'},
@@ -18,7 +18,7 @@ const answersMap = {
     static async sendQuestion(chatId) {
         const text = questions[this.active]
         const form = this.#getTemplate(this.active + 1);
-        await BotModule.bot.sendMessage(chatId, text, form);
+        await bot.sendMessage(chatId, text, form);
         this.active = this.active + 1;
    }
     #getTemplate(questionKey) {
@@ -32,4 +32,4 @@ const answersMap = {
     }
 }
 
-module.exports = Frontend;
+export default Frontend;
