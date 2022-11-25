@@ -17,11 +17,11 @@ const answersMap = {
     }
     static async sendQuestion(chatId) {
         const text = questions[this.active]
-        const form = this.#getTemplate(this.active + 1);
+        const form = this.getTemplate(this.active + 1);
         await bot.sendMessage(chatId, text, form);
         this.active = this.active + 1;
    }
-    #getTemplate(questionKey) {
+    getTemplate(questionKey) {
         return {
             reply_markup: JSON.stringify({
                 inline_keyboard: [
