@@ -1,5 +1,5 @@
 import TelegramBot from 'node-telegram-bot-api';
-import Frontend from './src/frontendPath';
+import Frontend from './src/frontendPath/index.js';
 
 const token = process.env.TELEGRAM_API_TOKEN;
 
