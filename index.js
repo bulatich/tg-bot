@@ -4,7 +4,7 @@ const Frontend = require('./src/frontendPath');
 const token = process.env.TELEGRAM_API_TOKEN;
 
 // Create a bot that uses 'polling' to fetch new updates
-export const bot = new TelegramBot(token, {polling: true});
+module.exports.bot = bot = new TelegramBot(token, {polling: true});
 
 
 const gameOptionns = {
