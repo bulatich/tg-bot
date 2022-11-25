@@ -15,7 +15,7 @@ const answersMap = {
     constructor(active) {
         this.active = active;
     } async sendQuestion(chatId) {
-        const text = questions[this.active]
+        const text = questions[this.active].text
         const form = this.#getTemplate(this.active + 1);
         await bot.sendMessage(chatId, text, form);
         this.active = this.active + 1;
