@@ -3,7 +3,7 @@ import Frontend from './src/frontendPath/index.js';
 
 const token = process.env.TELEGRAM_API_TOKEN;
 
-const frontend = new Frontend()
+const frontend = new Frontend(0)
 
 // Create a bot that uses 'polling' to fetch new updates
 export const bot = new TelegramBot(token, {polling: true});

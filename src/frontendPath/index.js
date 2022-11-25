@@ -11,7 +11,6 @@ const answersMap = {
 }
 
  class Frontend {
-    active = 0;
     constructor(active) {
         this.active = active;
     } async sendQuestion(chatId) {
