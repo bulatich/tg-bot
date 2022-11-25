@@ -3,6 +3,8 @@ import Frontend from './src/frontendPath/index.js';
 
 const token = process.env.TELEGRAM_API_TOKEN;
 
+const frontend = new Frontend()
+
 // Create a bot that uses 'polling' to fetch new updates
 export const bot = new TelegramBot(token, {polling: true});
 
@@ -38,7 +40,7 @@ bot.on('callback_query', async msg => {
     const data = msg.data;
     const chatId= msg.message.chat.id
     if (data === 'frontend') {
-        Frontend.sendQuestion(chatId)
+        frontend.sendQuestion(chatId)
     }
     await bot.sendMessage(chatId, data)
 })
