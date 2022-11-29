@@ -10,10 +10,16 @@ const answersMap = {
     2: [{text: 'Храние значение промежуточных вызовов фнкции', callback_data: 'ghj'}, {text: 'Библиотека', callback_data: 'lib'}]
 }
 
+const correctAnswerMap = {
+    1: 'qwe',
+    2: 'lib'
+}
+
  class Frontend {
     constructor(active) {
         this.active = active;
-    } async sendQuestion(chatId) {
+    }
+    async sendQuestion(chatId) {
         console.log(this.active, questions)
         const text = questions[this.active].text
         const form = this.#getTemplate(this.active + 1);
@@ -29,6 +35,7 @@ const answersMap = {
             })
         }
     }
+    
 }
 
 export default Frontend;
