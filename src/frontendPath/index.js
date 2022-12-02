@@ -1,7 +1,7 @@
 import {bot} from '../../index.js';
 import mongoose from "mongoose";
 
-const DB = 'mongodb+srv://dbUser:158796Qw.@cluster0.vkbbl.mongodb.net/?retryWrites=true&w=majority';
+const DB = 'mongodb+srv://dbUser:158796Qw@cluster0.vkbbl.mongodb.net/?retryWrites=true&w=majority';
 
 mongoose.connect(DB).then(() => {
     console.log('connected')
