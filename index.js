@@ -15,6 +15,10 @@ const frontend = new Frontend(0)
 // Create a bot that uses 'polling' to fetch new updates
 export const bot = new TelegramBot(token, {polling: true});
 
+bot.setWebHook("https://telegram-bot-interview-it.herokuapp.com").then(() => {
+    console.log('Webhook created')
+})
+
 
 const gameOptionns = {
     reply_markup: JSON.stringify({
