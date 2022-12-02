@@ -1,10 +1,10 @@
 import {bot} from '../../index.js';
 import mongoose from "mongoose";
 
-const DB = 'mongodb+srv://dbUser:158796Qw@cluster0.vkbbl.mongodb.net/?retryWrites=true&w=majority';
+const Schema = mongoose.Schema;
 
-mongoose.connect(DB).then(() => {
-    console.log('connected')
+const schema = new Schema({
+    
 })
 
 const questions = [
