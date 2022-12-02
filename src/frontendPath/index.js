@@ -10,16 +10,17 @@ const schema = new Schema({
 const questions = [
     {text: 'Что такое замыкание?', callback_data: '1'},
     {text: 'Что такое memo?', callback_data: '2'},
+    {text: 'Что такое чистая функция?', callback_data: '3'},
+    {text: 'Что такое event loop?', callback_data: '4'},
+    {text: 'Что такое Promise?', callback_data: '5'},
 ]
 
 const answersMap = {
-    1: [{text: 'Доступ к переменным и параметрам функции', callback_data: 'qwe'}, {text: 'Область видимости', callback_data: 'asdf'}],
-    2: [{text: 'Храние значение промежуточных вызовов фнкции', callback_data: 'ghj'}, {text: 'Библиотека', callback_data: 'lib'}]
-}
-
-const correctAnswerMap = {
-    1: 'qwe',
-    2: 'lib'
+    1: [{text: 'Доступ к переменным и параметрам функции', callback_data: '1_correct'}, {text: 'Область видимости', callback_data: '1_wrong'}],
+    2: [{text: 'Храние значение промежуточных вызовов функции', callback_data: '2_correct'}, {text: 'Библиотека', callback_data: '2_wrong'}],
+    3: [{text: 'Функция без side effects', callback_data: '3_correct'}, {text: 'Функция, которая ничего не возвращает', callback_data: '3_wrong'}],
+    4: [{text: 'Алгоритм движка браузера', callback_data: '4_correct'}, {text: 'Метод JS', callback_data: '4_wrong'}],
+    5: [{text: 'Класс по работе с отложенными вызовами', callback_data: '5_correct'}, {text: 'Массив', callback_data: '5_wrong'}]
 }
 
  class Frontend {

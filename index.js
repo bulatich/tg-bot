@@ -27,7 +27,7 @@ const gameOptionns = {
 }
 
 // Listen for any kind of message. There are different kinds of
-// messages.
+// messages
 bot.on('message', async  (msg) => {
   const chatId = msg.chat.id;
   const text = msg.text;
